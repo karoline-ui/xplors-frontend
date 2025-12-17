@@ -1,4 +1,4 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://xplors-backend.onrender.com'
 
 export async function uploadArquivo(file: File, token: string) {
   const formData = new FormData()
