@@ -10,7 +10,8 @@ import { useToast } from '@/components/ToastProvider'
 export default function UploadPage() {
   const router = useRouter()
   const { success, error: showError, info } = useToast()
-  
+  const API_URL = process.env.NEXT_PUBLIC_API_URL as string
+
   const [file, setFile] = useState<File | null>(null)
   const [isAnalyzing, setIsAnalyzing] = useState(false)
 
@@ -59,10 +60,11 @@ export default function UploadPage() {
       formData.append('file', file)
       formData.append('user_id', user.id)
 
-      const response = await fetch('http://localhost:5000/upload', {
+      const response = await fetch(`${API_URL}/upload`, {
         method: 'POST',
         body: formData
-      })
+  })
+
 
       const data = await response.json()
 
